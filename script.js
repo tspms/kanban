@@ -134,7 +134,18 @@ let columnId = 1;
       const task = document.getElementById(taskId);
 
       taskDetailsTitle.textContent = task.textContent;
-      // Добавьте код для отображения дополнительных деталей задачи, если есть
+      
+
+      taskDetailsContainer.style.display = 'block';
+    }
+
+    function showTaskDetails(taskName) {
+      const taskDetailsContainer = document.getElementById('task-details-container');
+      const taskDetailsTitle = document.getElementById('task-details-title');
+      const taskDetailsContent = document.getElementById('task-details-content');
+
+      taskDetailsTitle.textContent = `Task: ${taskName}`;
+      taskDetailsContent.textContent = 'Task details go here.';
 
       taskDetailsContainer.style.display = 'block';
     }
@@ -144,71 +155,75 @@ let columnId = 1;
       taskDetailsContainer.style.display = 'none';
     }
 
-
-
     function saveProject() {
+      const projectName = prompt('Enter project name:');
+      if (!projectName) {
+        return;
+      }
+
+      const project = {
+        name: projectName,
+        columns: [],
+      };
+
       const kanbanColumns = document.getElementById('kanban-columns');
       const columns = kanbanColumns.getElementsByClassName('column');
-      const project = [];
-
       for (let i = 0; i < columns.length; i++) {
-        const column = columns[i];
-        const tasks = column.getElementsByClassName('task');
         const columnData = {
-          name: column.querySelector('.column-heading').textContent,
+          name: columns[i].querySelector('.column-heading').textContent,
           tasks: [],
         };
 
+        const tasks = columns[i].getElementsByClassName('task');
         for (let j = 0; j < tasks.length; j++) {
-          const task = tasks[j];
-          columnData.tasks.push(task.querySelector('span').textContent);
+          const taskName = tasks[j].querySelector('span').textContent;
+          columnData.tasks.push(taskName);
         }
 
-        project.push(columnData);
+        project.columns.push(columnData);
       }
 
-      const selectedColumnId = getSelectedColumnId();
-      if (selectedColumnId) {
-        const selectedColumn = document.getElementById(selectedColumnId);
-        selectedColumn.innerHTML = '';
-        for (let i = 0; i < project.length; i++) {
-          const columnData = project[i];
-          const column = createColumn(columnData.name);
-          for (let j = 0; j < columnData.tasks.length; j++) {
-            const taskName = columnData.tasks[j];
-            const task = createTask(taskName);
-            column.appendChild(task);
-          }
-          selectedColumn.appendChild(column);
-        }
-      } else {
-        const projectsContainer = document.getElementById('projects-container');
-        const projectName = prompt('Enter project name:');
-        if (projectName) {
-          const projectElement = document.createElement('div');
-          projectElement.classList.add('project');
-          projectElement.textContent = projectName;
-          projectElement.onclick = () => loadProject(project);
-          projectsContainer.appendChild(projectElement);
-          projects.push({ name: projectName, project });
-        }
-      }
+      projects.push(project);
+      localStorage.setItem('projects', JSON.stringify(projects));
+      renderProjects();
     }
 
-    function getSelectedColumnId() {
+    function deleteProject(index) {
+      projects.splice(index, 1);
+      localStorage.setItem('projects', JSON.stringify(projects));
+      renderProjects();
+    }
+
+    function renderProjects() {
       const projectsContainer = document.getElementById('projects-container');
-      const selectedProject = projectsContainer.querySelector('.selected');
-      if (selectedProject) {
-        return selectedProject.id;
+      projectsContainer.innerHTML = '';
+
+      for (let i = 0; i < projects.length; i++) {
+        const projectElement = document.createElement('div');
+        projectElement.classList.add('project');
+        projectElement.textContent = `Project ${i + 1}: ${projects[i].name}`;
+        projectElement.addEventListener('click', () => loadProject(i));
+        
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.onclick = (event) => {
+          event.stopPropagation();
+          deleteProject(i);
+        };
+
+        projectElement.appendChild(deleteButton);
+
+        projectsContainer.appendChild(projectElement);
       }
-      return null;
     }
 
-    function loadProject(project) {
+    function loadProject(index) {
+      const project = projects[index];
       const kanbanColumns = document.getElementById('kanban-columns');
       kanbanColumns.innerHTML = '';
-      for (let i = 0; i < project.length; i++) {
-        const columnData = project[i];
+
+      for (let i = 0; i < project.columns.length; i++) {
+        const columnData = project.columns[i];
         const column = createColumn(columnData.name);
         for (let j = 0; j < columnData.tasks.length; j++) {
           const taskName = columnData.tasks[j];
@@ -217,15 +232,14 @@ let columnId = 1;
         }
         kanbanColumns.appendChild(column);
       }
-
-      const projectsContainer = document.getElementById('projects-container');
-      const selectedProject = projectsContainer.querySelector('.selected');
-      if (selectedProject) {
-        selectedProject.classList.remove('selected');
-      }
-
-      const clickedProject = event.currentTarget;
-      clickedProject.classList.add('selected');
     }
-	
-	
+
+    function initializeProjects() {
+      const storedProjects = localStorage.getItem('projects');
+      if (storedProjects) {
+        projects.push(...JSON.parse(storedProjects));
+        renderProjects();
+      }
+    }
+
+    initializeProjects();
