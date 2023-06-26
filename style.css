@@ -1,4 +1,10 @@
-/* Остальной CSS код остается без изменений */
+body {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100vh; 
+	
+}
 
 .kanban-controls {
   margin-bottom: 1rem;
@@ -7,12 +13,13 @@
 .kanban-columns {
   display: flex;
   flex-wrap: nowrap;
+  
 }
 
 .column {
   flex: 0 0 30%;
   margin-right: 1rem;
-  background-color: #fefefe;
+  background-color: blue;
   border-radius: 0.3rem;
   padding: 0.6rem;
 }
@@ -35,13 +42,6 @@
 
 .column-options button {
   margin-left: 0.5rem;
-}
-
-.task {
-  /* Остальные стили задач остаются без изменений */
-}
-body {
-  background-color: black;
 }
 
 .container {
@@ -89,12 +89,12 @@ body {
 
 #inprogress {
   background-color: #ffaf00;
-  /* display: none; */
+  
 }
 
 #done {
   background-color: #018b01;
-  /* display: none; */
+  
 }
 
 .task {
@@ -118,7 +118,7 @@ body {
 
 .create-new-task-block {
   display: none;
-  /* display: flex; */
+  
   background: #ffaf00;
   width: 64.4%;
   flex-direction: column;
@@ -173,7 +173,7 @@ textarea {
   display: none;
 }
 
-/* Остальные стили остаются без изменений */
+
 
 #task-details-overlay {
   display: none;
