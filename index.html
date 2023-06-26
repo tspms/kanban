@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Канбан доска</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="container">
+  <div class="kanban-heading">
+    <strong class="kanban-heading-text">Канбан доска</strong>
+  </div>
+  <div class="kanban-board">
+    <div class="kanban-controls">
+      <button id="add-column-button" onclick="addColumn()">Создать новый столбец</button>
+    </div>
+    <div class="kanban-columns" id="kanban-columns">
+      <!-- Columns will be dynamically added here -->
+    </div>
+  </div>
+</div>
+
+<div id="task-details-overlay" onclick="closeTaskDetails()"></div>
+<div id="task-details-container">
+  <div id="task-details-header">
+    <span id="task-details-title"></span>
+    <button id="close-task-details-button" onclick="closeTaskDetails()">Закрыть</button>
+  </div>
+  <div id="task-details-content">
+    <input type="text" id="edit-task-name-input">
+    <button id="save-task-button" onclick="saveTask()">Сохранить</button>
+  </div>
+</div>
+
+ 
+    <div id="kanban-columns"></div>
+    <div id="task-details-container">
+      <h3 id="task-details-title"></h3>
+      <p id="task-details-content"></p>
+      <button onclick="closeTaskDetails()">Close</button>
+    </div>
+  </div>
+ 
+    
+    <button onclick="saveProject()">Сохранить проект</button>
+  </div>
+  <div id="projects-container"></div>
+
+
+
+
+<script src="./script.js"></script>
+</body>
+</html>
