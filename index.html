@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
   <title>Канбан доска</title>
   <link rel="stylesheet" href="./style.css">
 </head>
-<body>
+<body background = "11_aswasdas1.jpg">
 <div class="container">
   <div class="kanban-heading">
     <strong class="kanban-heading-text">Канбан доска</strong>
@@ -15,7 +15,7 @@
       <button id="add-column-button" onclick="addColumn()">Создать новый столбец</button>
     </div>
     <div class="kanban-columns" id="kanban-columns">
-      <!-- Columns will be dynamically added here -->
+      
     </div>
   </div>
 </div>
@@ -37,7 +37,7 @@
     <div id="task-details-container">
       <h3 id="task-details-title"></h3>
       <p id="task-details-content"></p>
-      <button onclick="closeTaskDetails()">Close</button>
+      <button onclick="closeTaskDetails()">Закрыть</button>
     </div>
   </div>
  
@@ -52,3 +52,4 @@
 <script src="./script.js"></script>
 </body>
 </html>
+
