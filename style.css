@@ -8,6 +8,7 @@ body {
 
 .kanban-controls {
   margin-bottom: 1rem;
+
 }
 
 .kanban-columns {
@@ -19,29 +20,33 @@ body {
 .column {
   flex: 0 0 30%;
   margin-right: 1rem;
-  background-color: blue;
-  border-radius: 0.3rem;
+  background-color: white;
+  border-radius: 0.7rem;
   padding: 0.6rem;
 }
 
 .column-heading {
-  font-weight: bold;
+  font-weight: lighter;
   margin-bottom: 0.5rem;
+  font-family: "Comic Sans MS", cursive;
 }
 
 .column-options {
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.5rem;
+  
 }
 
 .column-options input {
   width: 60%;
   margin-right: 0.5rem;
+  
 }
-
+ /*удаление и сохранени*/
 .column-options button {
   margin-left: 0.5rem;
+  font-family: "Comic Sans MS", cursive;
 }
 
 .container {
@@ -56,7 +61,8 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  font-family: sans-serif;
+  font-family: "Comic Sans MS", cursive;
+  font-size: 2.5rem;
 }
 
 .kanban-board {
@@ -66,15 +72,8 @@ body {
   font-family: sans-serif;
 }
 
-.kanban-heading-text {
-  font-size: 1.8rem;
-  background-color: tomato;
-  padding: 0.8rem 1.7rem;
-  border-radius: 0.5rem;
-  margin: 1rem;
-}
 
-.kanban-block,
+
 .create-new-task-block {
   padding: 0.6rem;
   width: 30.5%;
@@ -83,19 +82,6 @@ body {
   border-radius: 0.3rem;
 }
 
-#todo {
-  background-color: #fec6d1;
-}
-
-#inprogress {
-  background-color: #ffaf00;
-  
-}
-
-#done {
-  background-color: #018b01;
-  
-}
 
 .task {
   background-color: white;
@@ -107,13 +93,14 @@ body {
 
 #task-button {
   margin: 0.2rem 0rem 0.1rem 0rem;
-  background-color: white;
+  background-color: weight;
   border-radius: 0.2rem;
   width: 100%;
   border: 0.25rem solid black;
   padding: 0.5rem 2.7rem;
   border-radius: 0.3rem;
   font-size: 1rem;
+  
 }
 
 .create-new-task-block {
@@ -128,6 +115,7 @@ body {
   display: flex;
   flex-direction: row;
   margin: 0.2rem;
+  
 }
 
 .form-row-label {
@@ -156,9 +144,8 @@ textarea {
   margin: 0.2rem;
 }
 
-#edit-button,
-#save-button,
-#cancel-button {
+save-button,
+cancel-button {
   margin: 0.2rem 0rem 0.1rem 0rem;
   background-color: white;
   border-radius: 0.2rem;
@@ -169,11 +156,10 @@ textarea {
   font-size: 1rem;
 }
 
-#edit-button {
+edit-button {
   display: none;
+
 }
-
-
 
 #task-details-overlay {
   display: none;
@@ -212,6 +198,60 @@ textarea {
   font-size: 1.2rem;
 }
 
+save-button,
+cancel-button {
+  margin: 0.2rem 0rem 0.1rem 0rem;
+  background-color: white;
+  border-radius: 0.2rem;
+  width: 49.2%;
+  border: 0.25rem solid black;
+  padding: 0.5rem 2.7rem;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+}
+
+#edit-button {
+  display: none;
+}
+
+#task-details-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#task-details-container {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  max-width: 600px;
+  background-color: #fefefe;
+  border-radius: 0.3rem;
+  padding: 1rem;
+  z-index: 1000;
+}
+
+#task-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+#task-details-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  font-family: Arial, sans-serif;
+}
+
 #close-task-details-button {
   background-color: white;
   border: 0.1rem solid black;
@@ -223,17 +263,28 @@ textarea {
   margin-bottom: 1rem;
 }
 
+}
 
- 
-    #projects-container {
-      margin-top: 20px;
-    }
+#close-task-details-button {
+  background-color: white;
+  border: 0.1rem solid black;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.2rem;
+}
 
-    .project {
-      cursor: pointer;
-      margin-bottom: 5px;
-      color: white;
-	  
-	  
-	  
-	  
+#task-details-content {
+  margin-bottom: 1rem;
+}
+
+projects-container {
+    margin-top: 20px;
+	font-family: "Comic Sans MS", cursive;
+	
+}
+
+.project {
+    cursor: pointer;
+    margin-bottom: 5px;
+    color: white;
+	
+}	
