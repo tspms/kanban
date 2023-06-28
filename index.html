@@ -5,7 +5,7 @@
   <title>Канбан доска</title>
   <link rel="stylesheet" href="./style.css">
 </head>
-<body background = "11_aswasdas1.jpg">
+<body background = "1.jpg">
 <div class="container">
   <div class="kanban-heading">
     <strong class="kanban-heading-text">Канбан доска</strong>
@@ -26,28 +26,20 @@
     <span id="task-details-title"></span>
     <button id="close-task-details-button" onclick="closeTaskDetails()">Закрыть</button>
   </div>
-  <div id="task-details-content">
     <input type="text" id="edit-task-name-input">
     <button id="save-task-button" onclick="saveTask()">Сохранить</button>
   </div>
 </div>
 
- 
-    <div id="kanban-columns"></div>
     <div id="task-details-container">
       <h3 id="task-details-title"></h3>
       <p id="task-details-content"></p>
       <button onclick="closeTaskDetails()">Закрыть</button>
     </div>
   </div>
- 
-    
-    <button onclick="saveProject()">Сохранить проект</button>
-  </div>
+  
+  <button onclick="saveProject()">Сохранить проект</button>
   <div id="projects-container"></div>
-
-
-
 
 <script src="./script.js"></script>
 </body>
