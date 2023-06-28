@@ -31,17 +31,17 @@ let columnId = 1;
       columnOptions.appendChild(editInput);
 
       const editButton = document.createElement('button');
-      editButton.textContent = 'Edit';
+      editButton.textContent = 'Изменить';
       editButton.onclick = () => editColumn(column.id);
       columnOptions.appendChild(editButton);
 
       const deleteButton = document.createElement('button');
-      deleteButton.textContent = 'Delete';
+      deleteButton.textContent = 'Удалить';
       deleteButton.onclick = () => deleteColumn(column.id);
       columnOptions.appendChild(deleteButton);
 
       const addTaskButton = document.createElement('button');
-      addTaskButton.textContent = 'Add Task';
+      addTaskButton.textContent = 'Создать новую задачу';
       addTaskButton.onclick = () => addTask(column.id);
       column.appendChild(addTaskButton);
 
@@ -84,12 +84,12 @@ let columnId = 1;
       task.appendChild(taskNameElement);
 
       const editButton = document.createElement('button');
-      editButton.textContent = 'Edit';
+      editButton.textContent = 'Изменить';
       editButton.onclick = () => editTask(task);
       task.appendChild(editButton);
 
       const deleteButton = document.createElement('button');
-      deleteButton.textContent = 'Delete';
+      deleteButton.textContent = 'Удалить';
       deleteButton.onclick = () => deleteTask(task);
       task.appendChild(deleteButton);
 
